@@ -32,8 +32,13 @@ Point3f calculate_distance(float x, float y, float disparity, Mat* Q) {
 int main(int argc, char** argv) {
     Mat Q = Mat(4, 4, CV_64F);
 
+    float x = atof(argv[1]);
+    float y = atof(argv[2]);
+    float disp = atof(argv[3]);
+
     get_q((char*)"q_matrix", &Q);
 
-    Point3f dim = calculate_distance(394, 284, 113, &Q);
+    //Point3f dim = calculate_distance(394, 284, 113, &Q);
+    Point3f dim = calculate_distance(x, y, disp, &Q);
     cout << dim << endl;
 }
