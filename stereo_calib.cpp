@@ -24,6 +24,7 @@ void calibrate_camera(FILE* file, vector<vector<Point3f>>* object_points, vector
 
 		bool found = findChessboardCorners(image, board_size, *corners, CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS | CALIB_CB_FAST_CHECK | CALIB_CB_NORMALIZE_IMAGE);
 		if (found) {
+            cout << "naso " << image_name << endl;
 			cornerSubPix(gray_image, *corners, Size(11, 11), Size(-1, -1), TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
 			drawChessboardCorners(gray_image, board_size, *corners, found);
 
@@ -109,9 +110,10 @@ int main(int argc, char** argv) {
 	}
 
     calibrate_camera(file_left, &object_points, &image_points_left, &corners_left, &intrinsic_left, &dist_coeffs_left, &rvecs_left, &tvecs_left, board_size);
-//  remove_distortion(file_left, &intrinsic_left, &dist_coeffs_left);
+    remove_distortion(file_left, &intrinsic_left, &dist_coeffs_left);
 
     calibrate_camera(file_right, &object_points, &image_points_right, &corners_right, &intrinsic_right, &dist_coeffs_right, &rvecs_right, &tvecs_right, board_size);
+    remove_distortion(file_right, &intrinsic_right, &dist_coeffs_right);
 
 	//STEREO CALIBRATION
 	Mat R = Mat(3, 3, CV_64F);

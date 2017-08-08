@@ -10,3 +10,4 @@ calib_photos/left-9.jpeg
 calib_photos/left-10.jpeg
 calib_photos/left-11.jpeg
 calib_photos/left-12.jpeg
+calib_photos/left-13.jpeg

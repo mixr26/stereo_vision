@@ -71,7 +71,7 @@ Point3f detect_object(char* left_image, char* right_image) {
     vector<Vec4i> hierarchy_left, hierarchy_right;
     vector<Rect> rectangles_left, rectangles_right;
 
-    Scalar min(100, 40, 40);
+    Scalar min(100, 100, 100);
     Scalar max(110, 255, 255);
     Scalar red(255, 0, 0);
     Mat threshold_frame_left, threshold_frame_right;

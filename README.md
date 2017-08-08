@@ -7,4 +7,4 @@ Stereo_vision.cpp contains distance measuring functions.
 
 1. Compile using make
 2. Run stereo_calib to calibrate the cameras usign pictures stored into calib_photos folder.
-3. Run stereo_vision to calculate the object distance, by inputing x and y coordinates of the object on the left picture, and also the disparity between the pictures taken by left and right camera respectively as program arguments (object detection coming soon).
+3. Run stereo_vision to calculate the object distance, by inputing x and y coordinates of the object on the left picture, and also the disparity between the pictures taken by left and right camera respectively as program arguments OR by inputing left and right test picture paths (included in test_photos directory).
