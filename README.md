@@ -1,10 +1,6 @@
 # stereo_vision
 Distance measuring using stereo vision (OpenCV)
 
-Stereo_calib.cpp contains camera calibration and rectification functions. It outputs the Q matrix, which is saved into q_matrix text file.
+StereoCalib class provides an interface for calibrating the cameras. Calibration photos (checkerboard) are provided in the calib_photos folder. They must be listed in additional_files/left.txt (pictures taken by the left camera) and additional_files/right.txt (pictures taken by the right camera) text files, which are loaded by the class.
 
-Stereo_vision.cpp contains distance measuring functions.
-
-1. Compile using make
-2. Run stereo_calib to calibrate the cameras usign pictures stored into calib_photos folder.
-3. Run stereo_vision to calculate the object distance, by inputing x and y coordinates of the object on the left picture, and also the disparity between the pictures taken by left and right camera respectively as program arguments OR by inputing left and right test picture paths (included in test_photos directory).
+StereoVision class provides an interface for detecting an object of a given colour, and transforming its 2D image coordinates into 3D real-world coordinates.
