@@ -8,6 +8,11 @@ StereoVision::StereoVision(std::string leftImage, std::string rightImage) {
     m_rightImageName.assign(rightImage);
 }
 
+void StereoVision::setImageNames(std::string leftImage, std::string rightImage) {
+    m_leftImageName.assign(leftImage);
+    m_rightImageName.assign(rightImage);
+}
+
 void StereoVision::getQMatrix(void) {
     std::ifstream qMatrixStream;
 

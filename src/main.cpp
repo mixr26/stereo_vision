@@ -3,12 +3,14 @@
 #include <iostream>
 
 int main() {
+    /*
     StereoCalib sc("additional_files/left.txt", "additional_files/right.txt");
     sc.leftCameraCalibrate();
     sc.leftCameraUndistort();
     sc.rightCameraCalibrate();
     sc.rightCameraUndistort();
     sc.stereoCalibrateAndRectify();
+    */
 
     StereoVision sv("test_photos/left-1.jpeg", "test_photos/right-1.jpg");
     sv.getQMatrix();
