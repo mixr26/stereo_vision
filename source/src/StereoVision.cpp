@@ -1,7 +1,8 @@
-#include "../inc/StereoVision.hpp"
+#include "StereoVision.hpp"
+
 #include <fstream>
 #include <iostream>
-#include <stdint.h>
+#include <cstdint>
 
 StereoVision::StereoVision(std::string leftImage, std::string rightImage) {
     m_leftImageName.assign(leftImage);

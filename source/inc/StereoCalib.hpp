@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include <stdint.h>
+#include <cstdint>
 #include <string>
 #include <fstream>
 #include <opencv2/opencv.hpp>

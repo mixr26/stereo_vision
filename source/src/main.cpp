@@ -1,5 +1,6 @@
-#include "../inc/StereoCalib.hpp"
-#include "../inc/StereoVision.hpp"
+#include "StereoCalib.hpp"
+#include "StereoVision.hpp"
+
 #include <iostream>
 
 int main() {

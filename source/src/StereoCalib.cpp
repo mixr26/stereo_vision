@@ -1,4 +1,4 @@
-#include "../inc/StereoCalib.hpp"
+#include "StereoCalib.hpp"
 
 StereoCalib::StereoCalib(std::string leftFile, std::string rightFile) {
     /* Open the files containing image names */
