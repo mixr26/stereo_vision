@@ -48,21 +48,21 @@ bool StereoCalib::leftCameraCalibrate(void) {
 
         image = cv::imread(imageName.c_str());
         if (!image.empty()) {
-            cv::cvtColor(image, grayImage, CV_BGR2GRAY);
+            cv::cvtColor(image, grayImage, cv::COLOR_BGR2GRAY);
         } else {
             std::cout << "Error reading image: " << imageName << std::endl;
             return false;
         }
 
         /* Check for chessboard corners */
-        found = cv::findChessboardCorners(image, m_boardSize, m_cornersLeft, CV_CALIB_CB_ADAPTIVE_THRESH
-                | CV_CALIB_CB_FILTER_QUADS | cv::CALIB_CB_FAST_CHECK | cv::CALIB_CB_NORMALIZE_IMAGE);
+        found = cv::findChessboardCorners(image, m_boardSize, m_cornersLeft, cv::CALIB_CB_ADAPTIVE_THRESH
+                | cv::CALIB_CB_FILTER_QUADS | cv::CALIB_CB_FAST_CHECK | cv::CALIB_CB_NORMALIZE_IMAGE);
 
         if (found) {
             std::cout << "Checkerboard detected on image: " << imageName << std::endl;
 
             cv::cornerSubPix(grayImage, m_cornersLeft, cv::Size(11, 11), cv::Size(-1, -1),
-                    cv::TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
+                    cv::TermCriteria(cv::TermCriteria::EPS | cv::TermCriteria::MAX_ITER, 30, 0.1));
             cv::drawChessboardCorners(grayImage, m_boardSize, m_cornersLeft, found);
 
             m_imageSize = image.size();
@@ -97,21 +97,21 @@ bool StereoCalib::rightCameraCalibrate(void) {
 
         image = cv::imread(imageName.c_str());
         if (!image.empty()) {
-            cv::cvtColor(image, grayImage, CV_BGR2GRAY);
+            cv::cvtColor(image, grayImage, cv::COLOR_BGR2GRAY);
         } else {
             std::cout << "Error reading image: " << imageName << std::endl;
             return false;
         }
 
         /* Check for chessboard corners */
-        found = cv::findChessboardCorners(image, m_boardSize, m_cornersRight, CV_CALIB_CB_ADAPTIVE_THRESH
-                | CV_CALIB_CB_FILTER_QUADS | cv::CALIB_CB_FAST_CHECK | cv::CALIB_CB_NORMALIZE_IMAGE);
+        found = cv::findChessboardCorners(image, m_boardSize, m_cornersRight, cv::CALIB_CB_ADAPTIVE_THRESH
+                | cv::CALIB_CB_FILTER_QUADS | cv::CALIB_CB_FAST_CHECK | cv::CALIB_CB_NORMALIZE_IMAGE);
 
         if (found) {
             std::cout << "Checkerboard detected on image: " << imageName << std::endl;
 
             cv::cornerSubPix(grayImage, m_cornersRight, cv::Size(11, 11), cv::Size(-1, -1),
-                    cv::TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
+                    cv::TermCriteria(cv::TermCriteria::EPS | cv::TermCriteria::MAX_ITER, 30, 0.1));
             cv::drawChessboardCorners(grayImage, m_boardSize, m_cornersRight, found);
 
             m_imageSize = image.size();
@@ -197,11 +197,11 @@ bool StereoCalib::stereoCalibrateAndRectify(void) {
 
     cv::stereoCalibrate(m_objectPoints, m_imagePointsLeft, m_imagePointsRight, m_intrinsicCoeffsLeft,
             m_distortionCoeffsLeft, m_intrinsicCoeffsRight, m_distortionCoeffsRight, m_imageSize,
-            R, T, E, F, CV_CALIB_FIX_INTRINSIC,
-            cv::TermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 100, 1e-5));
+            R, T, E, F, cv::CALIB_FIX_INTRINSIC,
+            cv::TermCriteria(cv::TermCriteria::EPS | cv::TermCriteria::MAX_ITER, 100, 1e-5));
 
     cv::stereoRectify(m_intrinsicCoeffsLeft, m_distortionCoeffsLeft, m_intrinsicCoeffsRight,
-            m_distortionCoeffsRight, m_imageSize, R, T, R1, R2, P1, P2, m_qMatrix, CV_CALIB_ZERO_DISPARITY);
+            m_distortionCoeffsRight, m_imageSize, R, T, R1, R2, P1, P2, m_qMatrix, cv::CALIB_ZERO_DISPARITY);
 
     outputQMatrix();
 

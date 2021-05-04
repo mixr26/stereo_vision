@@ -40,7 +40,7 @@ void StereoVision::convertColourSpaces(left_right lr) {
 
     switch (lr) {
     case LEFT:
-        cv::cvtColor(m_leftFrame, m_hsvLeftFrame, CV_BGR2HSV);
+        cv::cvtColor(m_leftFrame, m_hsvLeftFrame, cv::COLOR_BGR2HSV);
         cv::inRange(m_hsvLeftFrame, min, max, m_leftThresholdFrame);
 
         morphologyEx(m_leftThresholdFrame, m_leftThresholdFrame, cv::MORPH_OPEN, strEl);
@@ -48,7 +48,7 @@ void StereoVision::convertColourSpaces(left_right lr) {
 
         break;
     case RIGHT:
-        cv::cvtColor(m_rightFrame, m_hsvRightFrame, CV_BGR2HSV);
+        cv::cvtColor(m_rightFrame, m_hsvRightFrame, cv::COLOR_BGR2HSV);
         cv::inRange(m_hsvRightFrame, min, max, m_rightThresholdFrame);
 
         morphologyEx(m_rightThresholdFrame, m_rightThresholdFrame, cv::MORPH_OPEN, strEl);
@@ -66,7 +66,7 @@ void StereoVision::findRectangles(left_right lr) {
     switch (lr) {
     case LEFT:
         cv::findContours(m_leftThresholdFrame.clone(), m_contoursLeft, m_hierarchyLeft,
-                CV_RETR_TREE, CV_CHAIN_APPROX_NONE);
+                cv::RETR_TREE, cv::CHAIN_APPROX_NONE);
 
         count = m_contoursLeft.size();
         for (int i = 0; i < count; i++) {
@@ -86,7 +86,7 @@ void StereoVision::findRectangles(left_right lr) {
         break;
     case RIGHT:
         cv::findContours(m_rightThresholdFrame.clone(), m_contoursRight, m_hierarchyRight,
-                CV_RETR_TREE, CV_CHAIN_APPROX_NONE);
+                cv::RETR_TREE, cv::CHAIN_APPROX_NONE);
 
         count = m_contoursRight.size();
         for (int i = 0; i < count; i++) {
