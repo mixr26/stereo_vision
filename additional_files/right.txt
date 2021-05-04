@@ -2,6 +2,8 @@ calib_photos/right-10.jpg
 calib_photos/right-11.jpg
 calib_photos/right-12.jpg
 calib_photos/right-13.jpg
+calib_photos/right-14.jpg
+calib_photos/right-15.jpg
 calib_photos/right-1.jpg
 calib_photos/right-2.jpg
 calib_photos/right-3.jpg

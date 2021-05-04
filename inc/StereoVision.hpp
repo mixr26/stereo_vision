@@ -38,9 +38,7 @@ private:
     void findRectangles(left_right lr);
     void convertColourSpaces(left_right lr);
 public:
-    StereoVision() = default;
     StereoVision(std::string leftImage, std::string rightImage);
-    void setImageNames(std::string leftImage, std::string rightImage);
     cv::Point3f calculateDistance(cv::Point3f in);
     cv::Point3f detectObject(void);
     void getQMatrix(void);
